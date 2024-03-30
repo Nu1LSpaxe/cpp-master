@@ -130,6 +130,7 @@
   <ItemGroup>
     <ClCompile Include="Singleton_Eager.cpp" />
     <ClCompile Include="Singleton_Lazy.cpp" />
+    <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
