@@ -133,6 +133,8 @@
     <ClCompile Include="Dijkstra.cpp" />
     <ClCompile Include="FloydWarshall.cpp" />
     <ClCompile Include="Graph.cpp" />
+    <ClCompile Include="MarkovChain.cpp" />
+    <ClCompile Include="HiddenMarkovModel.cpp" />
     <ClCompile Include="Memorization.cpp" />
     <ClCompile Include="Optimization.cpp" />
     <ClCompile Include="Recursion.cpp" />
@@ -142,6 +144,7 @@
     <ClCompile Include="TopologicalSort.cpp" />
     <ClCompile Include="Transpose.cpp" />
     <ClInclude Include="Helper.h" />
+    <ClInclude Include="Markov.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Graph.h" />

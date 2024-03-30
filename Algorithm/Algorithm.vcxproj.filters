@@ -25,6 +25,9 @@
     <Filter Include="Source Files\BKTree\EditDistance">
       <UniqueIdentifier>{3aeef32a-5319-4195-9650-cc235d88b6e0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Markov">
+      <UniqueIdentifier>{58e3075e-7cda-46c9-b812-1894b7ab890c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TopologicalSort.cpp">
@@ -63,6 +66,12 @@
     <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="HiddenMarkovModel.cpp">
+      <Filter>Source Files\Markov</Filter>
+    </ClCompile>
+    <ClCompile Include="MarkovChain.cpp">
+      <Filter>Source Files\Markov</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Graph.h">
@@ -73,6 +82,9 @@
     </ClInclude>
     <ClInclude Include="Helper.h">
       <Filter>Source Files\BKTree</Filter>
+    </ClInclude>
+    <ClInclude Include="Markov.hpp">
+      <Filter>Source Files\Markov</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
