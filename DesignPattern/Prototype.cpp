@@ -1,10 +1,10 @@
 /// Applicability
 /// Use case 1:
 ///		When your code shouldn’t depend on the concrete classes 
-///		of objects that you need to copy.
+///		of objects that you need to copy
 /// Use case 2:
 ///		When you want to reduce the number of subclasses that only 
-///		differ in the way they initialize their respective objects.
+///		differ in the way they initialize their respective objects
 
 #include <string>
 #include <unordered_map>
@@ -29,7 +29,7 @@ namespace DesignPattern
 		Prototype(std::string p_name) : p_name_(p_name) {}
 		virtual ~Prototype() {}
 		virtual std::unique_ptr<Prototype> Clone() const = 0;
-		virtual float Method(float p_field)
+		virtual float SetField(float p_field)
 		{
 			this->p_field_ = p_field;
 			return this->p_field_;
@@ -39,7 +39,7 @@ namespace DesignPattern
 
 	/**
 	* ConcreteProtype1 is a Sub-Class of Prototype and
-	* implement the Clone Method
+	* implement the Clone SetField
 	*/
 	class ConcretePrototype1 : public Prototype
 	{
@@ -68,8 +68,7 @@ namespace DesignPattern
 		float cp_field2_;
 
 	public:
-		ConcretePrototype2(std::string p_name, float cp_field)
-			: Prototype(p_name), cp_field2_(cp_field)
+		ConcretePrototype2(std::string p_name, float cp_field) : Prototype(p_name), cp_field2_(cp_field)
 		{
 		}
 

@@ -22,7 +22,7 @@ int editDist_Recur(std::string str1, std::string str2, int m, int n)
     // If last characters are not the same,
     // consider all three operations on last character of str1,
     // recursively compute minimum cost for al
-    return 1 + min(editDist_Recur(str1, str2, m, n - 1),    // Insert
+    return 1 + Min(editDist_Recur(str1, str2, m, n - 1),    // Insert
         editDist_Recur(str1, str2, m - 1, n),    // Remove
         editDist_Recur(str1, str2, m - 1, n - 1)); // Replace
 }

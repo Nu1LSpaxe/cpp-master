@@ -80,9 +80,6 @@
     <ClInclude Include="BKTree.cpp">
       <Filter>Source Files\BKTree</Filter>
     </ClInclude>
-    <ClInclude Include="Helper.h">
-      <Filter>Source Files\BKTree</Filter>
-    </ClInclude>
     <ClInclude Include="Markov.hpp">
       <Filter>Source Files\Markov</Filter>
     </ClInclude>

@@ -105,6 +105,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>C:\Users\nu1ls\Desktop\repos\CppMaster\CppMaster;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -143,7 +144,6 @@
     <ClCompile Include="Table.cpp" />
     <ClCompile Include="TopologicalSort.cpp" />
     <ClCompile Include="Transpose.cpp" />
-    <ClInclude Include="Helper.h" />
     <ClInclude Include="Markov.hpp" />
   </ItemGroup>
   <ItemGroup>

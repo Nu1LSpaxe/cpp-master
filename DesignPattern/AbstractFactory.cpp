@@ -4,16 +4,17 @@
 ///		but you don’t want it to depend on the concrete classes of those products
 /// Use case 2:
 ///		When you have a class with a set of Factory Methods that blur its 
-///		primary responsibility.
+///		primary responsibility
 
 #include <string>
+#include <memory>
 
 namespace DesignPattern
 {
 	class AbstractProductA
 	{
 	public:
-		virtual ~AbstractProductA() {};
+		virtual ~AbstractProductA() = default;
 		virtual std::string GetCodeA() const = 0;
 	};
 
@@ -38,7 +39,7 @@ namespace DesignPattern
 	class AbstractProductB
 	{
 	public:
-		virtual ~AbstractProductB() {};
+		virtual ~AbstractProductB() = default;
 		virtual std::string GetCodeB() const = 0;
 
 		// Also can collaborate with other product
@@ -79,33 +80,33 @@ namespace DesignPattern
 	class AbstractFactory
 	{
 	public:
-		virtual AbstractProductA* CreateProductA() const = 0;
-		virtual AbstractProductB* CreateProductB() const = 0;
+		virtual std::unique_ptr<AbstractProductA> CreateProductA() const = 0;
+		virtual std::unique_ptr<AbstractProductB> CreateProductB() const = 0;
 	};
 
 	class ConcreteAbstractFactory1 : public AbstractFactory
 	{
 	public:
-		AbstractProductA* CreateProductA() const override
+		std::unique_ptr<AbstractProductA> CreateProductA() const override
 		{
-			return new ConcreteProductA1();
+			return std::make_unique<ConcreteProductA1>();
 		}
-		AbstractProductB* CreateProductB() const override
+		std::unique_ptr<AbstractProductB> CreateProductB() const override
 		{
-			return new ConcreteProductB1();
+			return std::make_unique<ConcreteProductB1>();
 		}
 	};
 	
 	class ConcreteAbstractFactory2 : public AbstractFactory
 	{
 	public:
-		AbstractProductA* CreateProductA() const override
+		std::unique_ptr<AbstractProductA> CreateProductA() const override
 		{
-			return new ConcreteProductA2();
+			return std::make_unique<ConcreteProductA2>();
 		}
-		AbstractProductB* CreateProductB() const override
+		std::unique_ptr<AbstractProductB> CreateProductB() const override
 		{
-			return new ConcreteProductB2();
+			return std::make_unique<ConcreteProductB2>();
 		}
 	};
 }

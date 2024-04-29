@@ -16,6 +16,9 @@
     <Filter Include="Source Files\Creational">
       <UniqueIdentifier>{8525fcb1-a2e3-423d-b4b5-2bdf2aa9de39}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Structural">
+      <UniqueIdentifier>{c2b9340b-cf50-4b67-b769-3b2579c6907d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Singleton_Lazy.cpp">
@@ -38,6 +41,12 @@
     </ClCompile>
     <ClCompile Include="Builder.cpp">
       <Filter>Source Files\Creational</Filter>
+    </ClCompile>
+    <ClCompile Include="Adapter.cpp">
+      <Filter>Source Files\Structural</Filter>
+    </ClCompile>
+    <ClCompile Include="Bridge.cpp">
+      <Filter>Source Files\Structural</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

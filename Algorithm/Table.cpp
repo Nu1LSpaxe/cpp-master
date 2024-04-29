@@ -19,7 +19,7 @@ int editDist_Table(std::string str1, std::string str2, int m, int n)
 
             else if (str1[i - 1] == str2[j - 1]) table[i][j] = table[i - 1][j - 1];
 
-            else table[i][j] = 1 + min(table[i][j - 1], table[i - 1][j], table[i - 1][j - 1]);  // Insert Remove Replace
+            else table[i][j] = 1 + Min(table[i][j - 1], table[i - 1][j], table[i - 1][j - 1]);  // Insert Remove Replace
         }
     }
     return table[m][n];

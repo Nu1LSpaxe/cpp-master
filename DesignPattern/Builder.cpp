@@ -1,11 +1,11 @@
 /// Applicability
 /// Use case 1:
-///		To get rid of a “telescoping constructor”.
+///		To get rid of a “telescoping constructor”
 /// Use case 2:
 ///		When you want your code to be able to create different 
 ///		representations of some product
 /// Use case 3:
-///		To construct Composite trees or other complex objects.
+///		To construct Composite trees or other complex objects
 
 #include <string>
 #include <vector>
@@ -36,7 +36,7 @@ namespace DesignPattern
 	class Builder
 	{
 	public:
-		virtual ~Builder() {}
+		virtual ~Builder() = default;
 		virtual void ProducePartA() const = 0;
 		virtual void ProducePartB() const = 0;
 		virtual void ProducePartC() const = 0;

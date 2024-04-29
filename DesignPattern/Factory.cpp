@@ -1,15 +1,16 @@
 /// Applicability
 /// Use case 1:
 ///		When you don’t know beforehand the exact types and dependencies
-///		of the objects your code should work with.
+///		of the objects your code should work with
 /// Use case 2:
 ///		When you want to provide users of your library or framework with
-///		a way to extend its internal components.
+///		a way to extend its internal components
 /// Use case 3:
 ///		When you want to save system resources by reusing existing objects 
-///		instead of rebuilding them each time.
+///		instead of rebuilding them each time
 
 #include <string>
+#include <memory>
 
 namespace DesignPattern
 {
@@ -46,8 +47,8 @@ namespace DesignPattern
 	class Factory
 	{
 	public:
-		virtual ~Factory() {};
-		virtual FactoryProduct* FactoryMethod() const = 0;
+		virtual ~Factory() = default;
+		virtual std::unique_ptr<FactoryProduct> Implementation() const = 0;
 
 		// It usually contains core business logic that relies on 
 		// FactoryProduct objects, returned by the factory method.
@@ -55,25 +56,25 @@ namespace DesignPattern
 		// overriding, and return a different type of product.
 		std::string DoOperation() const
 		{
-			return this->FactoryMethod()->Operation();
+			return this->Implementation()->Operation();
 		}
 	};
 
 	class ConcreteFactory1 : public Factory
 	{
 	public:
-		FactoryProduct* FactoryMethod() const override
+		std::unique_ptr<FactoryProduct> Implementation() const override
 		{
-			return new ConcreteProductF1();
+			return std::make_unique<ConcreteProductF1>();
 		}
 	};
 
 	class ConcreteFactory2 : public Factory
 	{
 	public:
-		FactoryProduct* FactoryMethod() const override
+		std::unique_ptr<FactoryProduct> Implementation() const override
 		{
-			return new ConcreteProductF2();
+			return std::make_unique<ConcreteProductF2>();
 		}
 	};
 }

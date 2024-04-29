@@ -23,7 +23,7 @@ int editDist_Memo(std::string str1, std::string str2, int m, int n, std::vector<
     int remove = editDist_Memo(str1, str2, m - 1, n, memo);
     int replace = editDist_Memo(str1, str2, m - 1, n - 1, memo);
 
-    return memo[m][n] = 1 + min(insert, remove, replace);
+    return memo[m][n] = 1 + Min(insert, remove, replace);
 }
 
 void TestEditDistance_Memo()

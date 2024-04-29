@@ -32,7 +32,7 @@ int editDist_Opt(std::string str1, std::string str2, int m, int n)
                 curr[j] = prev[j - 1];
             else
                 // Insert Remove Replace
-                curr[j] = 1 + min(curr[j - 1], prev[j - 1], prev[j]);
+                curr[j] = 1 + Min(curr[j - 1], prev[j - 1], prev[j]);
         }
         prev = curr;
     }
