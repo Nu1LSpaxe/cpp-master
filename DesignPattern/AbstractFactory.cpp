@@ -4,7 +4,6 @@
 ///		but you don’t want it to depend on the concrete classes of those products
 /// Use case 2:
 ///		When you have a class with a set of Factory Methods that blur its 
-///		primary responsibility
 
 #include <string>
 #include <memory>
@@ -14,7 +13,6 @@ namespace DesignPattern
 	class AbstractProductA
 	{
 	public:
-		virtual ~AbstractProductA() = default;
 		virtual std::string GetCodeA() const = 0;
 	};
 
@@ -39,7 +37,6 @@ namespace DesignPattern
 	class AbstractProductB
 	{
 	public:
-		virtual ~AbstractProductB() = default;
 		virtual std::string GetCodeB() const = 0;
 
 		// Also can collaborate with other product
@@ -80,33 +77,23 @@ namespace DesignPattern
 	class AbstractFactory
 	{
 	public:
-		virtual std::unique_ptr<AbstractProductA> CreateProductA() const = 0;
-		virtual std::unique_ptr<AbstractProductB> CreateProductB() const = 0;
 	};
 
 	class ConcreteAbstractFactory1 : public AbstractFactory
 	{
 	public:
-		std::unique_ptr<AbstractProductA> CreateProductA() const override
 		{
-			return std::make_unique<ConcreteProductA1>();
 		}
-		std::unique_ptr<AbstractProductB> CreateProductB() const override
 		{
-			return std::make_unique<ConcreteProductB1>();
 		}
 	};
 	
 	class ConcreteAbstractFactory2 : public AbstractFactory
 	{
 	public:
-		std::unique_ptr<AbstractProductA> CreateProductA() const override
 		{
-			return std::make_unique<ConcreteProductA2>();
 		}
-		std::unique_ptr<AbstractProductB> CreateProductB() const override
 		{
-			return std::make_unique<ConcreteProductB2>();
 		}
 	};
 }
