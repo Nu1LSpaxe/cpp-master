@@ -1,9 +1,4 @@
-/// Applicability
-/// Use case 1:
-///     When a class in your program should have just a single instance 
-///     available to all clients
-/// Use case 2:
-///     When you need stricter control over global variables
+/// A class has only one instance which provides a global access point
 
 #include <iostream>
 #include <mutex>
@@ -34,9 +29,10 @@ namespace DesignPattern
 
         // This is the static method that controls the access to the 
         // singleton instance.
-        // On the first run, it creates a singleton object and places it 
-        // into the static field. On subsequent runs, it returns the client 
-        // existing object stored in the static field.
+        // On the first run, it creates a singleton object and
+        // places it into the static field. On subsequent runs, 
+        // it returns the client existing object stored in the 
+        // static field.
         static Singleton_Lazy* Instance(const std::string& value);
 
         std::string value() const { return value_; }

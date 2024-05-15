@@ -1,11 +1,4 @@
-/// Applicability
-/// Use case 1:
-///		To get rid of a “telescoping constructor”
-/// Use case 2:
-///		When you want your code to be able to create different 
-///		representations of some product
-/// Use case 3:
-///		To construct Composite trees or other complex objects
+/// Construct complex objects step by step
 
 #include <string>
 #include <vector>

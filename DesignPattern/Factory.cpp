@@ -1,13 +1,5 @@
-/// Applicability
-/// Use case 1:
-///		When you don’t know beforehand the exact types and dependencies
-///		of the objects your code should work with
-/// Use case 2:
-///		When you want to provide users of your library or framework with
-///		a way to extend its internal components
-/// Use case 3:
-///		When you want to save system resources by reusing existing objects 
-///		instead of rebuilding them each time
+/// Provide an interface for creating objects in a superclass
+/// but allow subclasses to alter the type of created
 
 #include <string>
 #include <memory>
@@ -21,9 +13,7 @@ namespace DesignPattern
 		virtual std::string Operation() const = 0;
 	};
 
-	/**
-	* Implementations of the FactoryProduct interface
-	*/
+	// Implementations of the FactoryProduct interface
 	class ConcreteProductF1 : public FactoryProduct
 	{
 	public:

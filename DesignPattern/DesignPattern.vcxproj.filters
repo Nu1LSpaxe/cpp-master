@@ -48,5 +48,11 @@
     <ClCompile Include="Bridge.cpp">
       <Filter>Source Files\Structural</Filter>
     </ClCompile>
+    <ClCompile Include="Composite.cpp">
+      <Filter>Source Files\Structural</Filter>
+    </ClCompile>
+    <ClCompile Include="Decorator.cpp">
+      <Filter>Source Files\Structural</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,27 +1,20 @@
-/// Applicability
-/// Use case 1:
-///		When you want to use some existing class, but its 
-///		interface isn’t compatible with the rest of your code
-/// Use case 2:
-///		When you want to reuse several existing subclasses that 
-///		lack some common functionality that can’t be added to the
-///		superclass
+/// Allow objects with incompatible interfaces to collaborate
 
 #include <string>
 #include <memory>
 
 namespace DesignPattern
 {
-	// The Target defiens the domain-specific interface used by 
+	// The AdapterTarget defiens the domain-specific interface used by 
 	// client code
-	class Target
+	class AdapterTarget
 	{
 	public:
-		virtual ~Target() = default;
+		virtual ~AdapterTarget() = default;
 
 		virtual std::string Request() const
 		{
-			return "Target";
+			return "AdapterTarget";
 		}
 	};
 	 
@@ -37,8 +30,8 @@ namespace DesignPattern
 	};
 	
 	// The Adapter makes the Adaptee's interface compatible 
-	// with Target's interface
-	class Adapter : public Target
+	// with AdapterTarget's interface
+	class Adapter : public AdapterTarget
 	{
 	private:
 		Adaptee* adaptee_;

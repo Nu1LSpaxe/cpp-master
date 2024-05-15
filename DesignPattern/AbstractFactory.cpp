@@ -1,18 +1,13 @@
-/// Applicability
-/// Use case 1:
-///		When your code needs to work with various families of related products,
-///		but you don’t want it to depend on the concrete classes of those products
-/// Use case 2:
-///		When you have a class with a set of Factory Methods that blur its 
+/// Produce related objects without specifying concrete classes
 
 #include <string>
-#include <memory>
 
 namespace DesignPattern
 {
 	class AbstractProductA
 	{
 	public:
+		virtual ~AbstractProductA() {};
 		virtual std::string GetCodeA() const = 0;
 	};
 
@@ -37,6 +32,7 @@ namespace DesignPattern
 	class AbstractProductB
 	{
 	public:
+		virtual ~AbstractProductB() {};
 		virtual std::string GetCodeB() const = 0;
 
 		// Also can collaborate with other product
@@ -77,23 +73,33 @@ namespace DesignPattern
 	class AbstractFactory
 	{
 	public:
+		virtual AbstractProductA* CreateProductA() const = 0;
+		virtual AbstractProductB* CreateProductB() const = 0;
 	};
 
 	class ConcreteAbstractFactory1 : public AbstractFactory
 	{
 	public:
+		AbstractProductA* CreateProductA() const override
 		{
+			return new ConcreteProductA1();
 		}
+		AbstractProductB* CreateProductB() const override
 		{
+			return new ConcreteProductB1();
 		}
 	};
-	
+
 	class ConcreteAbstractFactory2 : public AbstractFactory
 	{
 	public:
+		AbstractProductA* CreateProductA() const override
 		{
+			return new ConcreteProductA2();
 		}
+		AbstractProductB* CreateProductB() const override
 		{
+			return new ConcreteProductB2();
 		}
 	};
 }

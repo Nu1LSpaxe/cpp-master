@@ -8,6 +8,8 @@
 #include "../DesignPattern/Builder.cpp"
 #include "../DesignPattern/Adapter.cpp"
 #include "../DesignPattern/Bridge.cpp"
+#include "../DesignPattern/Composite.cpp"
+#include "../DesignPattern/Decorator.cpp"
 #include "Helper.h"
 #include <future>
 
@@ -171,7 +173,7 @@ namespace DesignPattern
 	TEST_CLASS(AdapterTest)
 	{
 	private:
-		std::string Client(const Target* target)
+		std::string Client(const AdapterTarget* target)
 		{
 			return target->Request();
 		}
@@ -179,7 +181,7 @@ namespace DesignPattern
 	public:
 		TEST_METHOD(TargetToAdaptee)
 		{
-			auto target = new Target();
+			auto target = new AdapterTarget();
 			auto adaptee = new Adaptee();
 			auto adapter = new Adapter(adaptee);
 
@@ -190,7 +192,7 @@ namespace DesignPattern
 	TEST_CLASS(BridgeTest)
 	{
 	private:
-		std::string Client(const BridgeAbstr& abstr)
+		std::string Client(const BridgeAbstract& abstr)
 		{
 			return abstr.Operation();
 		}
@@ -199,15 +201,63 @@ namespace DesignPattern
 		TEST_METHOD(BaseTest)
 		{
 			auto implA = std::make_unique<ConcreteBridgeA>();
-			BridgeAbstr abstr(std::move(implA));
+			BridgeAbstract abstr(std::move(implA));
 
-			Assert::AreEqual(Client(abstr).compare("BridgeAbstr+ConcreteA"), 0);
+			Assert::AreEqual(Client(abstr).compare("BridgeAbstract+ConcreteA"), 0);
 
 			auto implB = std::make_unique<ConcreteBridgeB>();
 			ExtendedAbstr extendedAbstr(std::move(implB));
 
 			Assert::AreEqual(Client(extendedAbstr)
 				.compare("ExtendedAbstr+ConcreteB"), 0);
+		}
+	};
+
+	TEST_CLASS(CompositeTest)
+	{
+	private:
+		CompositeComponent* leaf = new Leaf;
+	
+	public:
+		TEST_METHOD(LeafTest)
+		{
+			Logger::WriteMessage(GetComponent(leaf).data());
+		}
+		TEST_METHOD(TreeTest)
+		{
+			CompositeComponent* tree = new Composite;
+			CompositeComponent* branch1 = new Composite;
+			CompositeComponent* branch2 = new Composite;
+
+			branch1->Add(new Leaf);
+			branch1->Add(new Leaf);
+			branch2->Add(new Leaf);
+			
+			tree->Add(branch1);
+			tree->Add(branch2);
+
+			Logger::WriteMessage(GetComponent(tree).data());
+			Logger::WriteMessage(GetComponents(tree, leaf).data());
+		}
+	};
+
+	TEST_CLASS(DecoratorTest)
+	{
+	private:
+		DecoratorComponent* component = new ConcreteComponent;
+
+	public:
+		TEST_METHOD(Decorator)
+		{
+			Logger::WriteMessage(component->Operation().data());
+			Logger::WriteMessage("\n");
+			
+			DecoratorComponent* decorator1 = 
+				new ConcreteDecorator1(component);
+			DecoratorComponent* decorator2 =
+				new ConcreteDecorator2(decorator1);
+
+			Logger::WriteMessage(decorator2->Operation().data());
 		}
 	};
 }

@@ -1,17 +1,13 @@
-/// Applicability
-/// Use case 1:
-///		When you want to divide and organize a monolithic class that has 
-///		several variants of some functionality
-/// Use case 2:
-///		When you need to extend a class in several orthogonal dimensions
+/// Split into seperate hierachies (abstraction + implementation)
 
 #include <string>
 #include <memory>
 
 namespace DesignPattern
 {
-	// The Implementaton interface provides primitive operations, while
-	// the BridgeAbstr defiens higher-level operations based on primitives.
+	// The Implementaton interface provides primitive operations, 
+	// while the BridgeAbstract defiens higher-level operations 
+	// based on primitives.
 	class BridgeImpl
 	{
 	public:
@@ -38,32 +34,32 @@ namespace DesignPattern
 		}
 	};
 
-	// The BridgeAbstr defines the interface for the "control" part of 
+	// The BridgeAbstract defines the interface for the "control" part of 
 	// the two class hierarchies.
-	class BridgeAbstr
+	class BridgeAbstract
 	{
 	protected:
 		std::unique_ptr<BridgeImpl> impl_;
 	
 	public:
-		BridgeAbstr(std::unique_ptr<BridgeImpl> impl)
+		BridgeAbstract(std::unique_ptr<BridgeImpl> impl)
 			: impl_(std::move(impl))
 		{
 		}
 		
-		virtual ~BridgeAbstr() = default;
+		virtual ~BridgeAbstract() = default;
 
 		virtual std::string Operation() const
 		{
-			return "BridgeAbstr+" + this->impl_->Operation();
+			return "BridgeAbstract+" + this->impl_->Operation();
 		}
 	};
 
-	class ExtendedAbstr : public BridgeAbstr
+	class ExtendedAbstr : public BridgeAbstract
 	{
 	public:
 		ExtendedAbstr(std::unique_ptr<BridgeImpl> impl)
-			: BridgeAbstr(std::move(impl))
+			: BridgeAbstract(std::move(impl))
 		{
 		}
 		std::string Operation() const override

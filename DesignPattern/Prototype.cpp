@@ -1,10 +1,4 @@
-/// Applicability
-/// Use case 1:
-///		When your code shouldn’t depend on the concrete classes 
-///		of objects that you need to copy
-/// Use case 2:
-///		When you want to reduce the number of subclasses that only 
-///		differ in the way they initialize their respective objects
+/// Copy existing objects without dependent on classes
 
 #include <string>
 #include <unordered_map>
